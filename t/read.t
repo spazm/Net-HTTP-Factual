@@ -16,8 +16,7 @@ is( ref $output->body->{response}->{data}, 'ARRAY', 'json decoded body to array'
 is( @{$output->body->{response}->{data}}, 20, '20 items in array' );
 
 my ( $status, $headers, $data ) = @$output;
-diag explain $status;
-diag explain $headers;
-diag explain $data;
+is ( $status, 200 ) or
+    diag explain { headers => $headers, data => $data };
 
 done_testing;

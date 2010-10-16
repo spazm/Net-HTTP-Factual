@@ -3,6 +3,42 @@ use warnings;
 use strict;
 use Net::HTTP::Spore;
 
+#ABSTRACT: RESTful interface to Factual.com, using Spore
+
+=head1 SYNOPSIS
+
+    my $api_key = "... get this from factual.com ...";
+    my $fact    = Net::HTTP::Factual->new();
+
+    my $response = $fact->client->read(
+        api_key  => $api_key,
+        table_id => 'EZ21ij',
+    );
+    die unless $response->status == 200;
+    my @json_decoded_data = $response->body->{response}{data};
+
+=cut 
+
+=head1 DESCRIPTION
+
+Net::HTTP::Factual is currently a thin wrapper around Net::HTTP::Spore that provides the necessary json spec file.  This interface should expand with use to provide helper functions around the three available REST verbs, read, input and schema
+
+=head1 SEE ALSO
+
+=over 4
+
+=item Spore
+
+http://search.cpan.org/perldoc?Spore
+
+=item Net::HTTP::Spore
+
+http://search.cpan.org/perldoc?Net::HTTP::Spore
+
+=back
+
+=cut
+
 use Moose;
 has client => ( is => 'ro', lazy_build => 1 );
 has spec   => ( is => 'ro', lazy_build => 1 );

@@ -2,5 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.102900  2010-10-16 17:09:50 PST8PDT
+
 0.102890  2010-10-16 16:04:00 PST8PDT
     * initial release

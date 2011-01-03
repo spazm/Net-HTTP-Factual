@@ -55,6 +55,7 @@ sub _build_spec
 {
     my $factual_spec = 
     '{
+       "base_url" : "http://api.factual.com",
        "api_base_url" : "http://api.factual.com",
        "version" : "v2",
        "expected" : "200",

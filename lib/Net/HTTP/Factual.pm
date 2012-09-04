@@ -17,11 +17,15 @@ use Net::HTTP::Spore;
     die unless $response->status == 200;
     my @json_decoded_data = $response->body->{response}{data};
 
-=cut 
+=cut
 
 =head1 DESCRIPTION
 
-Net::HTTP::Factual is currently a thin wrapper around Net::HTTP::Spore that provides the necessary json spec file.  This interface should expand with use to provide helper functions around the three available REST verbs, read, input and schema
+Net::HTTP::Factual is currently a thin wrapper around Net::HTTP::Spore that provides the necessary json spec file.  This interface should expand with use to provide helper functions around the three available REST verbs, read, input and schema.
+
+DEPRECATED:
+
+This module only supports factual API version 2.  The v2 API has been deprecated by factual.
 
 =head1 SEE ALSO
 
@@ -43,7 +47,7 @@ use Moose;
 has client => ( is => 'ro', lazy_build => 1 );
 has spec   => ( is => 'ro', lazy_build => 1 );
 
-sub _build_client 
+sub _build_client
 {
     my $self = shift;
     my $client = Net::HTTP::Spore->new_from_string($self->spec );
@@ -51,9 +55,9 @@ sub _build_client
     $client;
 }
 
-sub _build_spec 
+sub _build_spec
 {
-    my $factual_spec = 
+    my $factual_spec =
     '{
        "base_url" : "http://api.factual.com",
        "api_base_url" : "http://api.factual.com",
